@@ -1,6 +1,11 @@
 import requests
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
+# API_KEY = os.getenv('API_KEY')
 
 def fetch_news(api_key, query):
     """
@@ -51,10 +56,10 @@ def run_analysis():
     Main function to run the sentiment analysis process.
     """
     # IMPORTANT: Replace with your actual NewsAPI key
-    API_KEY = 'd156668f55a846ed884aa6a2fb9f7f18' 
+    API_KEY = os.getenv('API_KEY')
     
     # Keywords to search for. Using "OR" broadens the search.
-    KEYWORDS = '"IIT Mandi" OR "Mandi Himachal Pradesh"'
+    KEYWORDS = '"IIT Mandi" OR "Mandi" OR "Himachal Pradesh"'
     
     articles = fetch_news(API_KEY, KEYWORDS)
     
